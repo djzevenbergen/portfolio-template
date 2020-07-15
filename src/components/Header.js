@@ -35,15 +35,31 @@ const NavName = styled.h1`
 `;
 
 function Header() {
+
+  function scrollToLink(id) {
+    setTimeout(() => {
+      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    }, 0);
+  }
+
   return (
     <React.Fragment>
       <NavName>My Name</NavName>
       <NavBar>
         <NavItem>
-          <Link to='/'>Home</Link>
+          <Link to='/signin'>Sign In</Link>
         </NavItem>
         <NavItem>
-          <Link to='/signin'>Sign In</Link>
+          <Link to='/#contact' onClick={() => scrollToLink("contact")}> Contact</Link>
+        </NavItem>
+        <NavItem>
+          <Link to='/#projects' onClick={() => scrollToLink("projects")}> Projects</Link>
+        </NavItem>
+        <NavItem>
+          <Link to='/#about' onClick={() => scrollToLink("about")}>About</Link>
+        </NavItem>
+        <NavItem>
+          <Link to='/' onClick={() => scrollToLink("intro")}> Home</Link>
         </NavItem>
       </NavBar>
     </React.Fragment>

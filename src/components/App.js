@@ -8,30 +8,46 @@ import SignIn from './SignIn';
 import AdminPage from './AdminPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
+import createBrowserHistory from '../history';
 
 const theme = {
   font: 'Courier',
   color: 'yellow'
 };
+const history = createBrowserHistory;
 
 function App() {
-  return (
-    <Router>
-      <ThemeProvider theme={theme}>
 
+  function linkScroll() {
+    const { hash } = window.location;
+    if (hash !== '') {
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView();
+        }
+      }, 0);
+    }
+  }
+
+
+  return (
+    <Router history={history} onUpdate={linkScroll}>
+      <ThemeProvider theme={theme}>
         <Header />
         <Switch>
           <Route path='/signin'>
             <SignIn />
           </Route>
-          <Route path='/'>
+          <Route path='/adminpage'>
+            <AdminPage />
+          </Route>
+          <Route exact path='/'>
             <Intro theme={theme} />
             <About />
             <Projects />
             <Contact />
-          </Route>
-          <Route path='/admin'>
-            <AdminPage />
           </Route>
         </Switch>
       </ThemeProvider>

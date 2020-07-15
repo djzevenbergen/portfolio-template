@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import 'firebase/auth';
+
+const rrfProps = {
+  config: {
+    userPrile: "users",
+    useFirestoreForProfile: true,
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>

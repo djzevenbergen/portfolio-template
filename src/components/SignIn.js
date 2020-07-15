@@ -1,17 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Projects(props) {
+function SignIn(props) {
   return (
     <React.Fragment>
-      <h3>This is the Projects page</h3>
+      <h3>This is the SignIn</h3>
     </React.Fragment>
   );
 }
 
-Projects.propTypes = {
+SignIn.propTypes = {
 
 };
 
-
-export default Projects;
+export default SignIn;

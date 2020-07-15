@@ -1,25 +1,3 @@
-
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBWaxzY_6NsWL2C0Bda8aLd1SSbK6-sXfo",
-    authDomain: "portfolio-template-e927a.firebaseapp.com",
-    databaseURL: "https://portfolio-template-e927a.firebaseio.com",
-    projectId: "portfolio-template-e927a",
-    storageBucket: "portfolio-template-e927a.appspot.com",
-    messagingSenderId: "339040590032",
-    appId: "1:339040590032:web:c37a990832b6867e75e6d5"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

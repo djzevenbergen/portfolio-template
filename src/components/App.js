@@ -12,30 +12,19 @@ import createBrowserHistory from '../history';
 
 const theme = {
   font: 'Courier',
-  color: 'yellow'
+  primary: '#0a192f',
+  secondary: '#303C55',
+  light: '#ccd6f6',
+  white: '#e6f1ff'
 };
 const history = createBrowserHistory;
 
 function App() {
 
-  function linkScroll() {
-    const { hash } = window.location;
-    if (hash !== '') {
-      setTimeout(() => {
-        const id = hash.replace('#', '');
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView();
-        }
-      }, 0);
-    }
-  }
-
-
   return (
-    <Router history={history} onUpdate={linkScroll}>
+    <Router history={history}>
       <ThemeProvider theme={theme}>
-        <Header />
+        <Header theme={theme} />
         <Switch>
           <Route path='/signin'>
             <SignIn />
@@ -45,9 +34,9 @@ function App() {
           </Route>
           <Route exact path='/'>
             <Intro theme={theme} />
-            <About />
-            <Projects />
-            <Contact />
+            <About theme={theme} />
+            <Projects theme={theme} />
+            <Contact theme={theme} />
           </Route>
         </Switch>
       </ThemeProvider>

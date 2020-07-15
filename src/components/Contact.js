@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import styled from 'styled-components';
 
 const ContactContainer = styled.div`
+  margin: 0 auto;
+  padding: 150px 0;
+  max-width: 1000px;
+  position: relative;
 `;
 
 function Contact(props) {

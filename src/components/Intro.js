@@ -4,39 +4,45 @@ import styled, { withTheme } from "styled-components";
 import { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
-const IntroContainer = styled.section`
-  margin: 0 auto;
-  padding: 150px 0;
-  min-height: 100vh;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const IntroGreeting = styled.h1`
-  margin: 0 0 20px 3px;
-  font-size: 15px;
-  font-weight: normal;
-`;
-
-const IntroTitle = styled.h2`
-  font-size: 80px;
-  line-height: 1.1;
-  margin: 0;
-`;
-
-const IntroSubtitle = styled.h3`
-  font-size: 75px;
-  line-height: 1.1;
-`;
-
-const IntroDescription = styled.div`
-  margin-top: 25px;
-  width: 55%;
-`;
-
 function Intro(props) {
+
+  const IntroContainer = styled.section`
+    background-color: ${props.theme.primary};
+    margin: 0 auto;
+    padding: 50px 0;
+    min-height: 100vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
+
+  const IntroGreeting = styled.h1`
+    color: ${props.theme.white};
+    margin: 0 0 20px 3px;
+    font-size: 15px;
+    font-weight: normal;
+  `;
+
+  const IntroTitle = styled.h2`
+    color: ${props.theme.light};
+    font-size: 80px;
+    line-height: 0.5;
+    margin: 0;
+  `;
+
+  const IntroSubtitle = styled.h3`
+    color: ${props.theme.white};
+    font-size: 70px;
+    line-height: 0.5;
+  `;
+
+  const IntroDescription = styled.div`
+    color: ${props.theme.white};
+    margin-top: 25px;
+    width: 55%;
+  `;
+
   const themeContext = useContext(ThemeContext);
   console.log(themeContext);
 
@@ -51,7 +57,7 @@ function Intro(props) {
     <React.Fragment>
       <IntroContainer id="intro">
         {introItems.map((item, i) => {
-          return <div key={i}>{item}</div>
+          return <div key={item + i}>{item}</div>
         })}
       </IntroContainer>
     </React.Fragment>

@@ -44,8 +44,6 @@ function AdminPage(props) {
 
   console.log("file" + file);
 
-
-  // const storageRef = firebase.storage().ref();
   function addStuffToFirestore(event) {
     event.preventDefault();
     console.log("file" + file)

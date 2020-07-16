@@ -26,18 +26,14 @@ const IntroContainer = styled.section`
 
 function AdminPage(props) {
 
-
   const firestore = useFirestore();
   console.log(firebase.auth().currentUser.email);
   function addStuffToFirestore(event) {
-
 
     return firestore.collection('quizzes').add(
       {
         name: event.target.name.value,
         userEmail: this.props.auth.currentUser.email,
-        username: event.target.username.value,
-        q1: event.target.q1.value,
         q1a: event.target.q1a.value,
         q1b: event.target.q1b.value,
         q1c: event.target.q1c.value,

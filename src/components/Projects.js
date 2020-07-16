@@ -24,17 +24,19 @@ function Projects(props) {
   `;
 
   const ProjectCard = styled.div`
-    color: ${props.theme.white};
-    box-shadow: 3px 1px 3px ${props.theme.secondary};
+    color: ${props.theme.primary};
+    box-shadow: 3px 1px 3px ${props.theme.white};
+    border-radius: 10px;
+    background-color: ${props.theme.light};
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 10px;
     margin: 5px;
   `;
 
   const ProjectTitle = styled.div`
-    color: ${props.theme.light};
+    color: ${props.theme.primary};
     font-weight: bold;
     text-align: center;
   `;

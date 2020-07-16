@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
@@ -23,41 +24,77 @@ const IntroContainer = styled.section`
   align-items: center;
 `;
 
-
 function AdminPage(props) {
 
   const firestore = useFirestore();
-  console.log(firebase.auth().currentUser.email);
-  function addStuffToFirestore(event) {
 
-    return firestore.collection('quizzes').add(
+
+  const [hidden, setHidden] = useState(true);
+
+  if (firebase.auth().currentUser === null) {
+    setHidden(false);
+  }
+
+  let file = {};
+  const onFileChange = (event) => {
+
+    // Update the state 
+    file = event.target.files[0];
+  }
+
+  console.log("file" + file);
+
+
+  // const storageRef = firebase.storage().ref();
+  function addStuffToFirestore(event) {
+    event.preventDefault();
+    console.log("file" + file)
+    const fileType = event.target.image.type;
+    console.log(fileType);
+    const metadata = {
+      contentType: fileType
+    }
+    var blob = new Blob([file], { type: fileType });
+    const storageRef = firebase.storage().ref('src/public/' + file.name);
+    const uploadTask = storageRef.put(blob, metadata);
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      function (snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload Progress: ' + progress);
+      }, function (error) {
+        console.log(error);
+        switch (error.code) {
+          case 'storage/unauthorized':
+            console.log("User doesn't have permission to access the object");
+            break;
+          case 'storage/canceled':
+            console.log("User canceled the upload");
+            break;
+          case 'storage/unknown':
+            console.log("Unknown error occurred, inspect error.serverResponse");
+            break;
+        }
+      });
+
+    return firestore.collection('siteinfo').add(
       {
         name: event.target.name.value,
-        userEmail: this.props.auth.currentUser.email,
-        q1a: event.target.q1a.value,
-        q1b: event.target.q1b.value,
-        q1c: event.target.q1c.value,
-        q1d: event.target.q1d.value,
-        q2: event.target.q2.value,
-        q2a: event.target.q2a.value,
-        q2b: event.target.q2b.value,
-        q2c: event.target.q2c.value,
-        q2d: event.target.q2d.value,
-        q3: event.target.q3.value,
-        q3a: event.target.q3a.value,
-        q3b: event.target.q3b.value,
-        q3c: event.target.q3c.value,
-        q3d: event.target.q3d.value,
-        q4: event.target.q4.value,
-        q4a: event.target.q4a.value,
-        q4b: event.target.q4b.value,
-        q4c: event.target.q4c.value,
-        q4d: event.target.q4d.value,
-        q5: event.target.q5.value,
-        q5a: event.target.q5a.value,
-        q5b: event.target.q5b.value,
-        q5c: event.target.q5c.value,
-        q5d: event.target.q5a.value,
+        userEmail: firebase.auth().currentUser.email,
+        tagline: event.target.tagline.value,
+        fullbio: event.target.fullbio.value,
+        minibio: event.target.minibio.value,
+        // file: event.target.file.value,
+        projectdescription: event.target.projectdescription.value,
+        p1: event.target.p1.value,
+        p2: event.target.p2.value,
+        p3: event.target.p3.value,
+        p4: event.target.p4.value,
+        p5: event.target.p5.value,
+        p6: event.target.p6.value,
+        email: event.target.email.value,
+        linkedin: event.target.linkedin.value,
+        github: event.target.github.value,
+
         timeCreated: firestore.FieldValue.serverTimestamp()
       }
     );
@@ -66,120 +103,120 @@ function AdminPage(props) {
 
   return (
     <React.Fragment>
-      <IntroContainer>
+      {hidden ?
+        <IntroContainer>
 
-        <form>
-          <ul>
-            <li>
-              <label>
-                Title or Name:
-          <input type="text" name="name" />
-              </label>
-            </li>
-            <li>
-              <label>
-                Tagline:
-          <input type="text" name="tagline" />
-              </label>
-            </li>
-            <li>
-              <label>
-                Short bio:
-          <textarea>
-                  Your old bio here
-
-          </textarea>
-              </label>
-            </li>
-            <li>
-              <label>
-                Full bio:
-            <textarea>
-                  Your old bio here
+          <form onSubmit={addStuffToFirestore}>
+            <ul>
+              <li>
+                <label>
+                  Title or Name:
+          <input type="text" name="name" id="name" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  Tagline:
+          <input type="text" name="tagline" id="tagline" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  Short bio:
+          <textarea id="minibio">
+                    Your old bio here
 
           </textarea>
-              </label>
-            </li>
-            <li>
-              <label>
-                Pic:
-            <input type="file" name="file" />
-              </label>
-            </li>
-            <li>
-              <label>
-                Brief Description of projects:
-            <textarea>
-                  descriptions
+                </label>
+              </li>
+              <li>
+                <label>
+                  Full bio:
+            <textarea id="fullbio">
+                    Your old bio here
 
           </textarea>
-              </label>
-            </li>
-            <li>
-              <label>
-                Project 1:
-            <input type="text" name="p1" />
-              </label>
-            </li>
-            <li>
-              <label>
-                Project 2:
-            <input type="text" name="p2" />
-              </label>
-            </li>
-            <li>
-              <label>
-                Project 3:
-            <input type="text" name="p3" />
-              </label>
-            </li>
-            <li>
-              <label>
-                Project 4:
-            <input type="text" name="p4" />
-              </label>
-            </li>
-            <li>
-              <label>
-                Project 5:
-            <input type="text" name="p5" />
-              </label>
-            </li>
-            <li>
-              <label>
-                Project 6:
-            <input type="text" name="p6" />
-              </label>
-            </li>
-            <li>
-              <label>
-                email:
-            <input type="text" name="email" />
-              </label>
-            </li>
-            <li>
-              <label>
-                LinkedIn:
-            <input type="text" name="linkedin" />
-              </label>
-            </li>
-            <li>
-              <label>
-                GitHub:
-            <input type="text" name="github" />
-              </label>
-            </li>
-          </ul>
-          <button type="submit">Update</button>
-        </form>
-      </IntroContainer>
+                </label>
+              </li>
+              <li>
+                <label>
+                  Pic:
+            <input type="file" name="image" id="image" onChange={onFileChange} />
+                </label>
+              </li>
+              <li>
+                <label>
+                  Brief Description of projects:
+            <textarea id="projectdescription">
+                    descriptions
+
+          </textarea>
+                </label>
+              </li>
+              <li>
+                <label>
+                  Project 1:
+            <input type="text" name="p1" id="p1" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  Project 2:
+            <input type="text" name="p2" id="p2" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  Project 3:
+            <input type="text" name="p3" id="p3" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  Project 4:
+            <input type="text" name="p4" id="p4" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  Project 5:
+            <input type="text" name="p5" id="p5" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  Project 6:
+            <input type="text" name="p6" id="p6" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  email:
+            <input type="text" name="email" id="email" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  LinkedIn:
+            <input type="text" name="linkedin" id="linkedin" />
+                </label>
+              </li>
+              <li>
+                <label>
+                  GitHub:
+            <input type="text" name="github" id="github" />
+                </label>
+              </li>
+            </ul>
+            <button type="submit">Update</button>
+          </form>
+        </IntroContainer>
+        : <Redirect to="/signin" />}
 
 
-
-    </React.Fragment>
+    </React.Fragment >
   );
 }
 
-// AdminPage = connect(AdminPage);
 
 export default withFirestore(AdminPage);

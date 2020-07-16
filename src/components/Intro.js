@@ -7,7 +7,6 @@ import { ThemeContext } from 'styled-components';
 function Intro(props) {
 
   const IntroContainer = styled.section`
-    background-color: ${props.theme.primary};
     margin: 0 auto;
     padding: 50px 0;
     min-height: 100vh;
@@ -43,6 +42,54 @@ function Intro(props) {
     width: 55%;
   `;
 
+  const Stars = styled.div`
+
+  `;
+
+  const Waves = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background-color: ${props.theme.primary};
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    transition: 500ms;
+    z-index: -1;
+  
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 300vw;
+    height: 300vw;
+    top: -65vw;
+    left: 50%;
+    transform: translate(-50%, -75%);
+  }
+  
+  &:before {
+    border-radius: 44%;
+    background: ${props.theme.primary};
+    animation: waves 8s linear infinite;
+  }
+  
+  &:after {
+    border-radius: 44%;
+    background: rgba(51, 51, 51, 0.5);
+    animation: waves 15s linear infinite;
+  }
+  
+  @keyframes waves {
+    0% {
+      transform: translate(-50%, -75%) rotate(0deg);
+    }
+    
+    100% {
+      transform: translate(-50%, -75%) rotate(360deg);
+    }
+  `;
+
   const themeContext = useContext(ThemeContext);
   console.log(themeContext);
 
@@ -59,6 +106,7 @@ function Intro(props) {
         {introItems.map((item, i) => {
           return <div key={item + i}>{item}</div>
         })}
+        <Waves></Waves>
       </IntroContainer>
     </React.Fragment>
   );

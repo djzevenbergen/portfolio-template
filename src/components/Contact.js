@@ -2,30 +2,58 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from 'styled-components';
 
-const ContactContainer = styled.div`
-  margin: 0 auto;
-  padding: 150px 0;
-  max-width: 1000px;
-  position: relative;
-`;
-
 function Contact(props) {
+
+  const ContactSection = styled.section`
+    background-color: ${props.theme.secondary};
+  `;
+
+  const ContactContainer = styled.div`
+    margin: 0 auto;
+    padding: 150px 0;
+    max-width: 1000px;
+    position: relative;
+  `;
+
+  const ContactHeading = styled.h3`
+    color: ${props.theme.light};
+  `;
+
+  const ContactFormBox = styled.div`
+    padding: 10px;
+  `;
+
+  const FormInput = styled.input`
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+  `;
+
+  const FormArea = styled.textarea`
+    display: block;
+    resize: none;
+    margin: 0 auto;
+    margin-bottom: 5px;
+  `;
+
+  const Button = styled.button`
+    margin: 0 auto;
+    display: block;
+  `;
+
   return (
     <React.Fragment>
-      <ContactContainer id="contact">
-        <h2>Contact</h2>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tempus,
-            libero ac vestibulum ultrices, dolor mi rhoncus mauris, vitae dignissim diam
-            arcu quis libero. Aliquam blandit purus vel libero malesuada, ut consectetur
-            dui pellentesque. Mauris condimentum pellentesque congue. Morbi in turpis augue.
-            Vivamus fringilla scelerisque ligula, et fermentum lectus. Maecenas eros lacus,
-            volutpat vitae ultricies id, ullamcorper vitae diam. Nulla sodales tellus non
-            sagittis rutrum. Duis viverra faucibus elit, in mollis libero elementum fermentum.
-            Praesent fermentum, massa vulputate aliquam hendrerit, ipsum nunc venenatis orci,
-            a semper lectus lectus sit amet sapien. Cras congue erat egestas malesuada scelerisque.
-            Fusce id magna malesuada, scelerisque ligula at, pellentesque metus.
-            Proin sed magna in urna consequat dapibus.
-      </ContactContainer>
+      <ContactSection>
+        <ContactContainer id="contact">
+          <ContactHeading>Contact</ContactHeading>
+          <ContactFormBox>
+            <FormInput placeholder="Name" size="48" />
+            <FormInput placeholder="Email" size="48" />
+            <FormArea placeholder="Message" cols="50" rows="10" />
+            <Button>Send Message</Button>
+          </ContactFormBox>
+        </ContactContainer>
+      </ContactSection>
     </React.Fragment>
   );
 }

@@ -22,7 +22,6 @@ function SignIn() {
       setHidden(!hidden);
       console.log(hidden);
 
-
     }).catch(function (error) {
       console.log(error.message);
     });

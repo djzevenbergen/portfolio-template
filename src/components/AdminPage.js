@@ -53,7 +53,7 @@ function AdminPage(props) {
       contentType: fileType
     }
     var blob = new Blob([file], { type: fileType });
-    const storageRef = firebase.storage().ref('src/public/' + file.name);
+    const storageRef = firebase.storage().ref('src/public/profilepic');
     const uploadTask = storageRef.put(blob, metadata);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       function (snapshot) {
@@ -145,10 +145,9 @@ function AdminPage(props) {
               <li>
                 <label>
                   Brief Description of projects:
-            <textarea id="projectdescription">
-                    descriptions
+            <textarea id="projectdescription" defaultValue="description">
 
-          </textarea>
+                  </textarea>
                 </label>
               </li>
               <li>

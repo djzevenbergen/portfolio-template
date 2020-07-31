@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { UserContext } from './userContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { withFirestore, useFirestore } from 'react-redux-firebase';
 
 function Header(props) {
   const NavBar = styled.ul`
@@ -36,6 +38,8 @@ function Header(props) {
   top: 0;
   margin-left: 14px;
 `;
+
+
 
   function scrollToLink(id) {
     setTimeout(() => {

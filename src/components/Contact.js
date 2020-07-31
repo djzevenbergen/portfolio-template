@@ -15,6 +15,7 @@ function Contact(props) {
     position: relative;
   `;
 
+
   const ContactHeading = styled.h3`
     color: ${props.theme.light};
   `;

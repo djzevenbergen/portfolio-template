@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from 'styled-components';
+import emailjs from "emailjs-com";
 
 function Contact(props) {
 
@@ -42,16 +43,34 @@ function Contact(props) {
     display: block;
   `;
 
+  const sendEmail = (event) => {
+    event.preventDefault();
+    // generate the contact number value
+    this.contact_number.value = Math.random() * 100000 | 0;
+    emailjs.sendForm('contact_service', 'contact_form', this);
+  }
+
   return (
     <React.Fragment>
+      {/* <script type="text/javascript">
+        {
+          window.onload = function () {
+            document.getElementById('contact-form').addEventListener('submit', function (event) {
+
+            });
+          }
+        }
+      </script> */}
       <ContactSection>
         <ContactContainer id="contact">
           <ContactHeading>Contact</ContactHeading>
-          <ContactFormBox>
-            <FormInput placeholder="Name" size="48" />
-            <FormInput placeholder="Email" size="48" />
-            <FormArea placeholder="Message" cols="50" rows="10" />
-            <Button>Send Message</Button>
+          <ContactFormBox id="contact-form">
+            <input type="hidden" name="contact_number" onSubmit={() => sendEmail} />
+
+            <FormInput placeholder="Name" size="48" type="text" name="user_name" />
+            <FormInput placeholder="Email" size="48" type="email" name="user_email" />
+            <FormArea placeholder="Message" cols="50" rows="10" name="message" />
+            <Button type="submit" value="Send">Send Message</Button>
           </ContactFormBox>
         </ContactContainer>
       </ContactSection>

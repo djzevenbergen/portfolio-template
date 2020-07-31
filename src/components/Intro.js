@@ -31,15 +31,17 @@ function Intro(props) {
 
   const IntroTitle = styled.h2`
     color: ${props.theme.light};
-    font-size: 80px;
-    line-height: 0.5;
+    font-size: 4em;
+    line-height: 0.8;
+
     margin: 0;
+    white-space: normal;
   `;
 
   const IntroSubtitle = styled.h3`
     color: ${props.theme.white};
-    font-size: 70px;
-    line-height: 0.5;
+    font-size: 3em;
+    line-height: 0.9;
   `;
 
   const IntroDescription = styled.div`
@@ -117,8 +119,8 @@ function Intro(props) {
       <IntroContainer id="intro">
         <IntroGreeting>Hi, my name is</IntroGreeting>
         <IntroTitle>{value.name}.</IntroTitle>
-        <IntroSubtitle>I make webzones.</IntroSubtitle>
-        <IntroDescription>I'm a Full Stack Developer in the PNW, specializing in building full stack web applications in React, JavaScript, and C#.</IntroDescription>
+        <IntroSubtitle>{value.tagline}.</IntroSubtitle>
+        <IntroDescription>{value.minibio}.</IntroDescription>
 
 
         {/* <Waves></Waves> */}

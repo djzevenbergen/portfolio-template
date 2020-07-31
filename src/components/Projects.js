@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from './userContext';
 import PropTypes from "prop-types";
 import styled from 'styled-components';
 
-function Projects(props) {
 
+function Projects(props) {
+  const { value } = useContext(UserContext);
   const ProjectsSection = styled.section`
     background-color: ${props.theme.primary};
   `;
@@ -44,23 +46,27 @@ function Projects(props) {
   const projectList = [
     <ProjectCard>
       <ProjectTitle>Project 1</ProjectTitle>
-      Testy testerson
+      {value.p1}
     </ProjectCard>,
     <ProjectCard>
       <ProjectTitle>Project 2</ProjectTitle>
-      Testy testerson
+      {value.p2}
     </ProjectCard>,
     <ProjectCard>
       <ProjectTitle>Project 3</ProjectTitle>
-      Testy testerson
+      {value.p3}
     </ProjectCard>,
     <ProjectCard>
       <ProjectTitle>Project 4</ProjectTitle>
-      Testy testerson
+      {value.p4}
     </ProjectCard>,
     <ProjectCard>
       <ProjectTitle>Project 5</ProjectTitle>
-      Testy testerson
+      {value.p5}
+    </ProjectCard>,
+    <ProjectCard>
+      <ProjectTitle>Project 6</ProjectTitle>
+      {value.p6}
     </ProjectCard>
   ];
 

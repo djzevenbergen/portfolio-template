@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from './userContext';
 import PropTypes from "prop-types";
 import styled from 'styled-components';
 
 function About(props) {
+  const { value } = useContext(UserContext);
   const AboutSection = styled.section`
     background-color: ${props.theme.secondary};
   `;
@@ -66,20 +68,10 @@ function About(props) {
           <AboutHeading>About</AboutHeading>
           <FlexContainer>
             <AboutContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tempus,
-              libero ac vestibulum ultrices, dolor mi rhoncus mauris, vitae dignissim diam
-              arcu quis libero. Aliquam blandit purus vel libero malesuada, ut consectetur
-              dui pellentesque. Mauris condimentum pellentesque congue. Morbi in turpis augue.
-              Vivamus fringilla scelerisque ligula, et fermentum lectus. Maecenas eros lacus,
-              volutpat vitae ultricies id, ullamcorper vitae diam. Nulla sodales tellus non
-              sagittis rutrum. Duis viverra faucibus elit, in mollis libero elementum fermentum.
-              Praesent fermentum, massa vulputate aliquam hendrerit, ipsum nunc venenatis orci,
-              a semper lectus lectus sit amet sapien. Cras congue erat egestas malesuada scelerisque.
-              Fusce id magna malesuada, scelerisque ligula at, pellentesque metus.
-              Proin sed magna in urna consequat dapibus.
-        </AboutContent>
+              {value.fullbio}
+            </AboutContent>
             <AboutPic>
-              <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/76/766e00574b3ca2ac2099086d4de9c3c512ee2c22_full.jpg" />
+              <img width="40%" src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/src%2Fpublic%2Fprofilepic?alt=media&token=25e9a5d5-d7d2-415d-be69-d62342aaafb8" />
             </AboutPic>
           </FlexContainer>
         </AboutContainer>

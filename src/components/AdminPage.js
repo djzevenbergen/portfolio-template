@@ -40,10 +40,13 @@ function AdminPage(props) {
   const onFileChange = (event) => {
 
     // Update the state 
+
     file = event.target.files[0];
+
+
   }
 
-  console.log("file" + file);
+  console.table(file);
 
   function addStuffToFirestore(event) {
 
@@ -51,35 +54,38 @@ function AdminPage(props) {
     event.preventDefault();
 
     //upload file
-    console.log("file" + file)
-    const fileType = event.target.image.type;
-    console.log(fileType);
-    const metadata = {
-      contentType: fileType
+    console.table(file)
+    if (file.name) {
+
+
+      const fileType = event.target.image.type;
+      console.log(fileType);
+      const metadata = {
+        contentType: fileType
+      }
+      var blob = new Blob([file], { type: fileType });
+      const storageRef = firebase.storage().ref('src/public/profilepic');
+      const uploadTask = storageRef.put(blob, metadata);
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+        function (snapshot) {
+          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload Progress: ' + progress);
+        }, function (error) {
+          console.log(error);
+          switch (error.code) {
+            case 'storage/unauthorized':
+              console.log("User doesn't have permission to access the object");
+              break;
+            case 'storage/canceled':
+              console.log("User canceled the upload");
+              break;
+            case 'storage/unknown':
+              console.log("Unknown error occurred, inspect error.serverResponse");
+              break;
+          }
+        });
+
     }
-    var blob = new Blob([file], { type: fileType });
-    const storageRef = firebase.storage().ref('src/public/profilepic');
-    const uploadTask = storageRef.put(blob, metadata);
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      function (snapshot) {
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload Progress: ' + progress);
-      }, function (error) {
-        console.log(error);
-        switch (error.code) {
-          case 'storage/unauthorized':
-            console.log("User doesn't have permission to access the object");
-            break;
-          case 'storage/canceled':
-            console.log("User canceled the upload");
-            break;
-          case 'storage/unknown':
-            console.log("Unknown error occurred, inspect error.serverResponse");
-            break;
-        }
-      });
-
-
     //updates
 
 

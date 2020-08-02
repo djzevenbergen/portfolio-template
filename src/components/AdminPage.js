@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import { UserContext } from "./userContext";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
@@ -25,6 +25,7 @@ const IntroContainer = styled.section`
 `;
 
 function AdminPage(props) {
+  const { value } = useContext(UserContext);
 
   const firestore = useFirestore();
 
@@ -45,7 +46,11 @@ function AdminPage(props) {
   console.log("file" + file);
 
   function addStuffToFirestore(event) {
+
+
     event.preventDefault();
+
+    //upload file
     console.log("file" + file)
     const fileType = event.target.image.type;
     console.log(fileType);
@@ -73,6 +78,11 @@ function AdminPage(props) {
             break;
         }
       });
+
+
+    //updates
+
+
 
     return firestore.collection('siteinfo').add(
       {
@@ -109,31 +119,31 @@ function AdminPage(props) {
               <li>
                 <label>
                   Title or Name:
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" defaultValue={value.name} />
                 </label>
               </li>
               <li>
                 <label>
                   Tagline:
-          <input type="text" name="tagline" id="tagline" />
+          <input type="text" name="tagline" id="tagline" defaultValue={value.tagline} />
                 </label>
               </li>
               <li>
                 <label>
                   Short bio:
-          <textarea id="minibio">
-                    Your old bio here
+          <textarea id="minibio" defaultValue={value.minibio}>
 
-          </textarea>
+
+                  </textarea>
                 </label>
               </li>
               <li>
                 <label>
                   Full bio:
-            <textarea id="fullbio">
-                    Your old bio here
+            <textarea id="fullbio" defaultValue={value.fullbio}>
 
-          </textarea>
+
+                  </textarea>
                 </label>
               </li>
               <li>
@@ -145,7 +155,7 @@ function AdminPage(props) {
               <li>
                 <label>
                   Brief Description of projects:
-            <textarea id="projectdescription" defaultValue="description">
+            <textarea id="projectdescription" defaultValue={value.projectdescription}>
 
                   </textarea>
                 </label>
@@ -153,55 +163,55 @@ function AdminPage(props) {
               <li>
                 <label>
                   Project 1:
-            <input type="text" name="p1" id="p1" />
+            <input type="text" name="p1" id="p1" defaultValue={value.p1} />
                 </label>
               </li>
               <li>
                 <label>
                   Project 2:
-            <input type="text" name="p2" id="p2" />
+            <input type="text" name="p2" id="p2" defaultValue={value.p2} />
                 </label>
               </li>
               <li>
                 <label>
                   Project 3:
-            <input type="text" name="p3" id="p3" />
+            <input type="text" name="p3" id="p3" defaultValue={value.p3} />
                 </label>
               </li>
               <li>
                 <label>
                   Project 4:
-            <input type="text" name="p4" id="p4" />
+            <input type="text" name="p4" id="p4" defaultValue={value.p4} />
                 </label>
               </li>
               <li>
                 <label>
                   Project 5:
-            <input type="text" name="p5" id="p5" />
+            <input type="text" name="p5" id="p5" defaultValue={value.p5} />
                 </label>
               </li>
               <li>
                 <label>
                   Project 6:
-            <input type="text" name="p6" id="p6" />
+            <input type="text" name="p6" id="p6" defaultValue={value.p6} />
                 </label>
               </li>
               <li>
                 <label>
                   email:
-            <input type="text" name="email" id="email" />
+            <input type="text" name="email" id="email" defaultValue={value.userEmail} />
                 </label>
               </li>
               <li>
                 <label>
                   LinkedIn:
-            <input type="text" name="linkedin" id="linkedin" />
+            <input type="text" name="linkedin" id="linkedin" defaultValue={value.linkedin} />
                 </label>
               </li>
               <li>
                 <label>
                   GitHub:
-            <input type="text" name="github" id="github" />
+            <input type="text" name="github" id="github" defaultValue={value.github} />
                 </label>
               </li>
             </ul>

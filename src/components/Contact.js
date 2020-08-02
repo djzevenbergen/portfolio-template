@@ -52,15 +52,6 @@ function Contact(props) {
 
   return (
     <React.Fragment>
-      {/* <script type="text/javascript">
-        {
-          window.onload = function () {
-            document.getElementById('contact-form').addEventListener('submit', function (event) {
-
-            });
-          }
-        }
-      </script> */}
       <ContactSection>
         <ContactContainer id="contact">
           <ContactHeading>Contact</ContactHeading>

@@ -49,7 +49,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <NavName>Spagett</NavName>
+      <NavName>Your Friend Deej</NavName>
       <NavBar>
         <NavItem>
           <Link to='/signin'>Sign In</Link>

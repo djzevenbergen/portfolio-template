@@ -37,7 +37,7 @@ function App() {
 
     let data = [];
     let count = 0;
-    firestore.collection("siteinfo").get()
+    firestore.collection("siteinfo").orderBy("timeCreated", "desc").limit(1).get()
       .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
           data.push(doc.data());

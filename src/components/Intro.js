@@ -116,7 +116,7 @@ function Intro(props) {
       <IntroContainer id="intro">
         {/* <IntroGreeting>Hi, my name is</IntroGreeting> */}
         <IntroTitle>{value.name}.</IntroTitle>
-        <IntroSubtitle>{value.tagline}.</IntroSubtitle>
+        {/* <IntroSubtitle>{value.tagline}.</IntroSubtitle> */}
         {/* <IntroDescription>{value.minibio}.</IntroDescription> */}
 
 

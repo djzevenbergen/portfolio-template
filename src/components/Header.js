@@ -54,9 +54,9 @@ function Header(props) {
     <React.Fragment>
       <NavName>Your Friend Deej</NavName>
       <NavBar>
-        <NavItem>
+        {/* <NavItem>
           <Link to='/signin'>Sign In</Link>
-        </NavItem>
+        </NavItem> */}
         <NavItem>
           <Link onClick={() => darkModeToggle()}>Toggle Darkmode</Link>
         </NavItem>

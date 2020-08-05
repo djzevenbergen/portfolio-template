@@ -14,8 +14,8 @@ import { UserContext, DarkmodeContext } from './userContext';
 
 const LightTheme = {
   font: 'Courier',
-  primary: '#FFFFFF',
-  secondary: '#FFFFFF',
+  primary: '#FDF5E6',
+  secondary: '#FDF5E6',
   light: '#000000',
   white: '#000000'
 };
@@ -24,8 +24,8 @@ const DarkTheme = {
   font: 'Courier',
   primary: '#000000',
   secondary: '#000000',
-  light: '#FFFFFF',
-  white: '#FFFFFF'
+  light: '#FDF5E6',
+  white: '#FDF5E6'
 
 }
 

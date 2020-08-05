@@ -102,9 +102,6 @@ function Intro(props) {
   const { value } = useContext(UserContext);
   console.log(themeContext);
 
-
-
-
   // const introItems = [
   //   <IntroGreeting>Hi, my name is</IntroGreeting>,
   //   <IntroTitle>{value.name}.</IntroTitle>,
@@ -117,10 +114,10 @@ function Intro(props) {
     <React.Fragment>
       {console.log(value.name)}
       <IntroContainer id="intro">
-        <IntroGreeting>Hi, my name is</IntroGreeting>
+        {/* <IntroGreeting>Hi, my name is</IntroGreeting> */}
         <IntroTitle>{value.name}.</IntroTitle>
         <IntroSubtitle>{value.tagline}.</IntroSubtitle>
-        <IntroDescription>{value.minibio}.</IntroDescription>
+        {/* <IntroDescription>{value.minibio}.</IntroDescription> */}
 
 
         {/* <Waves></Waves> */}

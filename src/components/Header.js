@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { UserContext } from './userContext';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext, DarkmodeContext } from './userContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { withFirestore, useFirestore } from 'react-redux-firebase';
 
 function Header(props) {
+
+  const { darkModeToggle } = useContext(DarkmodeContext);
   const NavBar = styled.ul`
     list-style-type: none;
     margin: 0;
@@ -53,6 +55,9 @@ function Header(props) {
       <NavBar>
         <NavItem>
           <Link to='/signin'>Sign In</Link>
+        </NavItem>
+        <NavItem>
+          <Link onClick={() => darkModeToggle()}>Toggle Darkmode</Link>
         </NavItem>
         <NavItem>
           <Link to='/#contact' onClick={() => scrollToLink("contact")}> Contact</Link>

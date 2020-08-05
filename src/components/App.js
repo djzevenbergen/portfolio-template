@@ -10,19 +10,40 @@ import { withFirestore, useFirestore } from 'react-redux-firebase';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import createBrowserHistory from '../history';
-import { UserContext } from './userContext';
+import { UserContext, DarkmodeContext } from './userContext';
 
-const theme = {
+const LightTheme = {
   font: 'Courier',
-  primary: '#0a192f',
-  secondary: '#303C55',
-  light: '#ccd6f6',
-  white: '#e6f1ff'
+  primary: '#FFFFFF',
+  secondary: '#FFFFFF',
+  light: '#000000',
+  white: '#000000'
 };
+
+const DarkTheme = {
+  font: 'Courier',
+  primary: '#000000',
+  secondary: '#000000',
+  light: '#FFFFFF',
+  white: '#FFFFFF'
+
+}
+
 const history = createBrowserHistory;
 
 function App() {
   const [value, setValue] = useState(null);
+  const [theme, setTheme] = useState(LightTheme);
+
+  const darkModeToggle = () => {
+    if (theme == LightTheme) {
+      console.log("is the toggle true")
+      setTheme(DarkTheme);
+    } else {
+      console.log("is the toggle false")
+      setTheme(LightTheme);
+    }
+  }
 
   const [isLoaded, setLoading] = useState(false);
   const firestore = useFirestore();
@@ -60,28 +81,29 @@ function App() {
   return (
     <Router history={history}>
       {isLoaded ?
+        <DarkmodeContext.Provider value={{ darkModeToggle }}>
+          <UserContext.Provider value={{ value }}>
+            {console.log(value)}
+            <ThemeProvider theme={theme}>
+              <Header theme={theme} />
+              <Switch>
+                <Route path='/signin'>
+                  <SignIn />
+                </Route>
+                <Route path='/adminpage'>
+                  <AdminPage />
+                </Route>
+                <Route exact path='/'>
+                  <Intro theme={theme} />
+                  <About theme={theme} />
+                  <Projects theme={theme} />
+                  <Contact theme={theme} />
+                </Route>
+              </Switch>
+            </ThemeProvider>
 
-        <UserContext.Provider value={{ value }}>
-          {console.log(value)}
-          <ThemeProvider theme={theme}>
-            <Header theme={theme} />
-            <Switch>
-              <Route path='/signin'>
-                <SignIn />
-              </Route>
-              <Route path='/adminpage'>
-                <AdminPage />
-              </Route>
-              <Route exact path='/'>
-                <Intro theme={theme} />
-                <About theme={theme} />
-                <Projects theme={theme} />
-                <Contact theme={theme} />
-              </Route>
-            </Switch>
-          </ThemeProvider>
-
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </DarkmodeContext.Provider>
         : <p>Loading</p>}
     </Router>
   );

@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Component } from 'react';
 import { UserContext, DarkmodeContext } from './userContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { withFirestore, useFirestore } from 'react-redux-firebase';
+import ToggleSwitch from "./Switch";
+// import Switch from "./Switch.js";
+
 
 function Header(props) {
 
@@ -42,6 +45,11 @@ function Header(props) {
   margin-left: 14px;
 `;
 
+  const [checked, setCheck] = useState(false);
+
+  const handleChange = (checked) => {
+    setCheck(checked);
+  }
 
 
   function scrollToLink(id) {
@@ -54,9 +62,7 @@ function Header(props) {
     <React.Fragment>
       <NavName>Your Friend Deej</NavName>
       <NavBar>
-        {/* <NavItem>
-          <Link to='/signin'>Sign In</Link>
-        </NavItem> */}
+
         <NavItem>
           <Link onClick={() => darkModeToggle()}>Toggle Darkmode</Link>
         </NavItem>

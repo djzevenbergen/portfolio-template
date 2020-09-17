@@ -16,6 +16,9 @@ function Contact(props) {
     position: relative;
   `;
 
+  const Text = styled.div`
+  color: ${props.theme.white};
+  `
 
   const ContactHeading = styled.h3`
     color: ${props.theme.light};
@@ -55,14 +58,16 @@ function Contact(props) {
       <ContactSection>
         <ContactContainer id="contact">
           <ContactHeading>Contact</ContactHeading>
-          <ContactFormBox id="contact-form">
+          {/* <ContactFormBox id="contact-form">
             <input type="hidden" name="contact_number" onSubmit={() => sendEmail} />
 
             <FormInput placeholder="Name" size="48" type="text" name="user_name" />
             <FormInput placeholder="Email" size="48" type="email" name="user_email" />
             <FormArea placeholder="Message" cols="50" rows="10" name="message" />
             <Button type="submit" value="Send">Send Message</Button>
-          </ContactFormBox>
+          </ContactFormBox> */}
+          <Text>djzevenbergen@gmail.com</Text>
+
         </ContactContainer>
       </ContactSection>
     </React.Fragment>

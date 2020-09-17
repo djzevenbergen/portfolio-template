@@ -31,7 +31,7 @@ function Intro(props) {
 
   const IntroTitle = styled.h2`
     color: ${props.theme.light};
-    font-size: 4em;
+    font-size: 3.5em;
     line-height: 0.8;
 
     margin: 0;

@@ -10,7 +10,7 @@ import { withFirestore, useFirestore } from 'react-redux-firebase';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import createBrowserHistory from '../history';
-import { UserContext, DarkmodeContext } from './userContext';
+import { UserContext, DarkmodeContext, MediaContext } from './userContext';
 
 const LightTheme = {
   font: 'Courier',
@@ -34,6 +34,7 @@ const history = createBrowserHistory;
 function App() {
   const [value, setValue] = useState(null);
   const [theme, setTheme] = useState(LightTheme);
+  const [media, setMedia] = useState(null);
 
   const darkModeToggle = () => {
     if (theme == LightTheme) {
@@ -45,6 +46,10 @@ function App() {
     }
   }
 
+  const mediaChange = () => {
+
+  }
+
   const [isLoaded, setLoading] = useState(false);
   const firestore = useFirestore();
 
@@ -52,6 +57,7 @@ function App() {
   useEffect(() => {
     getProfile();
   }, [])
+
 
 
   const getProfile = () => {

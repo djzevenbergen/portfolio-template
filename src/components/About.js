@@ -71,7 +71,7 @@ function About(props) {
               {value.fullbio}
             </AboutContent>
             <AboutPic>
-              <img width="40%" src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/src%2Fpublic%2Fprofilepic?alt=media&token=25e9a5d5-d7d2-415d-be69-d62342aaafb8" />
+              <img class="prof-pic" src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/src%2Fpublic%2Fprofilepic?alt=media&token=25e9a5d5-d7d2-415d-be69-d62342aaafb8" />
             </AboutPic>
           </FlexContainer>
         </AboutContainer>

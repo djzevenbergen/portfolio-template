@@ -7,8 +7,22 @@ import ToggleSwitch from "./Switch";
 import { Jumbotron, Navbar, Nav } from 'react-bootstrap';
 // import Switch from "./Switch.js";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function Header(props) {
+
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 800);
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 800);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+
 
   const navImg = {
     width: "110px",
@@ -32,6 +46,19 @@ function Header(props) {
     width: 100%;
     z-index: 1000;
   `;
+
+
+
+  const navStyles = {
+    float: "right",
+    margin: "0",
+    padding: "0",
+    overflow: "hidden",
+    position: "auto",
+    top: "0",
+    width: "100%"
+  }
+
 
   const NavItem = styled.li`
   float: right;
@@ -58,10 +85,19 @@ function Header(props) {
 `;
 
   const [checked, setCheck] = useState(false);
+  const [menuVisible, setVisibility] = useState(false);
 
   const handleChange = (checked) => {
     setCheck(checked);
   }
+
+  const handlSet = () => {
+
+  }
+
+  useEffect(() => {
+
+  }, menuVisible)
 
 
   function scrollToLink(id) {
@@ -92,11 +128,38 @@ function Header(props) {
   return (
     <React.Fragment>
       <NavName>Your Friend Deej</NavName>
-      <div class="collapse">
-        {nav[0]}
-      </div>
 
+      {/* <div class="expand">
+        <a href="#menu" onClick={() => setVisibility(!menuVisible)}>
+          <img src="././public/logo192.png" alt="menu image" />
 
+        </a>
+
+      </div> */}
+
+      {isDesktop ? (
+        // <div class="collapse">
+        <div> { nav[0]} </div>
+        // </div>
+      ) : (
+          // <Navbar style={navStyles} variant='dark' expand='lg'>
+          //   <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          //   <Navbar.Collapse id="basic-navbar-nav">
+
+          //     <Nav className="mr-auto">
+
+          //       <Nav.Link >  <Link onClick={() => darkModeToggle()}>Toggle Darkmode</Link></Nav.Link>
+          //       <Nav.Link > <Link to='/#contact' onClick={() => scrollToLink("contact")}> Contact</Link></Nav.Link>
+          //       <Nav.Link > <Link to='/#projects' onClick={() => scrollToLink("projects")}> Projects</Link></Nav.Link>
+          //       <Nav.Link > <Link to='/#about' onClick={() => scrollToLink("about")}>About</Link></Nav.Link>
+          //       <Nav.Link > <Link to='/' onClick={() => scrollToLink("intro")}> Home</Link></Nav.Link>
+          //       {/* <Nav.Link> <Link className='navLink6' id="home" onClick={gitHubRepo}><img className="ghIcon" src="https://i.ibb.co/MhpKckw/gh-icon-white.png" alt="gh-icon" />  GitHub for this Project</Link></Nav.Link> */}
+          //       {/* <Nav.Link> <Link id="home" className='navLink' to="/">GitHub for this Project</Link></Nav.Link> */}
+          //     </Nav>
+          //   </Navbar.Collapse>
+          // </Navbar>
+          ""
+        )}
 
 
 

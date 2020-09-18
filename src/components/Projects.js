@@ -36,6 +36,7 @@ function Projects(props) {
     flex-direction: column;
     padding: 10px;
     margin: 5px;
+    text-align: center;
   `;
 
   const ProjectTitle = styled.div`
@@ -44,14 +45,12 @@ function Projects(props) {
     text-align: center;
   `;
 
+
   const ProjectImage = styled.img`
-  max-width: 85%;
+  max-width: 100%;
   max-height: 60%;
-  position: absolute;
-  margin-top: 10%;
-  padding-left: 5%;
-  padding-right: 5%
-  box-shadow: 3px 1px 3px ${props.theme.white};
+  padding: 5%;
+
   
   `;
 
@@ -61,13 +60,10 @@ function Projects(props) {
   const projectList = [
     <ProjectCard>
       <ProjectTitle>Collab-a-Lab React App</ProjectTitle>
-
-
       <a href={value.p1}><ProjectImage src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/projects%2Fproject1.png?alt=media&token=8510e287-976c-40f3-8797-e44f8b4494f5" ></ProjectImage></a>
     </ProjectCard>,
     <ProjectCard>
       <ProjectTitle>Booch Town React App</ProjectTitle>
-
       <a href={value.p2}><ProjectImage src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/projects%2Fproject2.png?alt=media&token=04741a4b-5a35-4761-a183-6d99e6ebc7d1" ></ProjectImage></a>
     </ProjectCard>,
     <ProjectCard>

@@ -95,9 +95,9 @@ function Header(props) {
 
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, menuVisible)
+  // }, menuVisible)
 
 
   function scrollToLink(id) {
@@ -141,25 +141,25 @@ function Header(props) {
         // <div class="collapse">
         <div> { nav[0]} </div>
         // </div>
-      ) : (
-          // <Navbar style={navStyles} variant='dark' expand='lg'>
-          //   <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          //   <Navbar.Collapse id="basic-navbar-nav">
+      ) :
+        // <Navbar style={navStyles} variant='dark' expand='lg'>
+        //   <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        //   <Navbar.Collapse id="basic-navbar-nav">
 
-          //     <Nav className="mr-auto">
+        //     <Nav className="mr-auto">
 
-          //       <Nav.Link >  <Link onClick={() => darkModeToggle()}>Toggle Darkmode</Link></Nav.Link>
-          //       <Nav.Link > <Link to='/#contact' onClick={() => scrollToLink("contact")}> Contact</Link></Nav.Link>
-          //       <Nav.Link > <Link to='/#projects' onClick={() => scrollToLink("projects")}> Projects</Link></Nav.Link>
-          //       <Nav.Link > <Link to='/#about' onClick={() => scrollToLink("about")}>About</Link></Nav.Link>
-          //       <Nav.Link > <Link to='/' onClick={() => scrollToLink("intro")}> Home</Link></Nav.Link>
-          //       {/* <Nav.Link> <Link className='navLink6' id="home" onClick={gitHubRepo}><img className="ghIcon" src="https://i.ibb.co/MhpKckw/gh-icon-white.png" alt="gh-icon" />  GitHub for this Project</Link></Nav.Link> */}
-          //       {/* <Nav.Link> <Link id="home" className='navLink' to="/">GitHub for this Project</Link></Nav.Link> */}
-          //     </Nav>
-          //   </Navbar.Collapse>
-          // </Navbar>
-          ""
-        )}
+        //       <Nav.Link >  <Link onClick={() => darkModeToggle()}>Toggle Darkmode</Link></Nav.Link>
+        //       <Nav.Link > <Link to='/#contact' onClick={() => scrollToLink("contact")}> Contact</Link></Nav.Link>
+        //       <Nav.Link > <Link to='/#projects' onClick={() => scrollToLink("projects")}> Projects</Link></Nav.Link>
+        //       <Nav.Link > <Link to='/#about' onClick={() => scrollToLink("about")}>About</Link></Nav.Link>
+        //       <Nav.Link > <Link to='/' onClick={() => scrollToLink("intro")}> Home</Link></Nav.Link>
+        //       {/* <Nav.Link> <Link className='navLink6' id="home" onClick={gitHubRepo}><img className="ghIcon" src="https://i.ibb.co/MhpKckw/gh-icon-white.png" alt="gh-icon" />  GitHub for this Project</Link></Nav.Link> */}
+        //       {/* <Nav.Link> <Link id="home" className='navLink' to="/">GitHub for this Project</Link></Nav.Link> */}
+        //     </Nav>
+        //   </Navbar.Collapse>
+        // </Navbar>
+
+        ""}
 
 
 

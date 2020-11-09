@@ -58,7 +58,15 @@ function About(props) {
 
   const AboutPic = styled.div`
     position: relative;
+    float: left;
     width:40%;
+  `;
+
+  const PictureBorder = styled.img`
+
+    padding: 1px;
+    border: 1px solid ${props.theme.light};
+
   `;
 
   return (
@@ -67,12 +75,15 @@ function About(props) {
         <AboutContainer id="about">
           <AboutHeading>About</AboutHeading>
           <FlexContainer>
+            <AboutPic>
+
+              <PictureBorder id="prof-pic" src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/src%2Fpublic%2Fprofilepic?alt=media&token=25e9a5d5-d7d2-415d-be69-d62342aaafb8" />
+
+            </AboutPic>
             <AboutContent>
               {value.fullbio}
             </AboutContent>
-            <AboutPic>
-              <img class="prof-pic" src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/src%2Fpublic%2Fprofilepic?alt=media&token=25e9a5d5-d7d2-415d-be69-d62342aaafb8" />
-            </AboutPic>
+
           </FlexContainer>
         </AboutContainer>
       </AboutSection>

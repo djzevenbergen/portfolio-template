@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+/* .prof-pic{
+  padding:1px;
+  border:1px solid #021a40;
+} */
+
 /* .expand{
   display: none;
 } */
@@ -21,7 +26,7 @@ code {
   .expand {
     display: none;
   }
-  .prof-pic{
+  #prof-pic{
     width: 50%;
   }
 }
@@ -30,7 +35,7 @@ code {
   .collapse {
     display: none;
   }
-  .prof-pic{
+  #prof-pic{
     width: 80%;
   }
   .expand {

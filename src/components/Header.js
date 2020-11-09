@@ -42,6 +42,7 @@ function Header(props) {
     padding: 0;
     overflow: hidden;
     position: fixed;
+    background-color: ${props.theme.secondary};
     top: 0;
     width: 100%;
     z-index: 1000;
@@ -107,6 +108,7 @@ function Header(props) {
   }
 
   const nav = [<NavBar >
+    <NavName>Your Friend Deej</NavName>
     <NavItem>
       <Link onClick={() => darkModeToggle()}>Toggle Darkmode</Link>
     </NavItem>
@@ -127,7 +129,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <NavName>Your Friend Deej</NavName>
+
 
       {/* <div class="expand">
         <a href="#menu" onClick={() => setVisibility(!menuVisible)}>
@@ -159,7 +161,7 @@ function Header(props) {
         //   </Navbar.Collapse>
         // </Navbar>
 
-        ""}
+        <NavName>Your Friend Deej</NavName>}
 
 
 

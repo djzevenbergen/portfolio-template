@@ -66,7 +66,8 @@ function Contact(props) {
             <FormArea placeholder="Message" cols="50" rows="10" name="message" />
             <Button type="submit" value="Send">Send Message</Button>
           </ContactFormBox> */}
-          <Text>djzevenbergen@gmail.com</Text>
+          <Text><a class="lin" href="https://www.linkedin.com/in/dj-zevenbergen/" alt="My LinkedIn">LinkedIn</a></Text>
+          <Text><a class="lin" href="https://github.com/djzevenbergen" alt="My Github">GitHub</a></Text>
 
         </ContactContainer>
       </ContactSection>

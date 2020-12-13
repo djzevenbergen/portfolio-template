@@ -75,8 +75,8 @@ function Projects(props) {
       <a href={value.p4}><ProjectImage src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/projects%2Fproject4.png?alt=media&token=762f79c0-9e5d-4b9b-b5b0-83bb288bb3db" ></ProjectImage></a>
     </ProjectCard>,
     <ProjectCard>
-      <ProjectTitle>I Fell in love with a Postcard</ProjectTitle>
-      <a href={value.p5}><ProjectImage src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/projects%2Fproject5.png?alt=media&token=30f2f1c8-6448-45c3-b0b7-298239080ddf" ></ProjectImage></a>
+      <ProjectTitle>Corners</ProjectTitle>
+      <a href={value.p5}><ProjectImage height="37%" src="https://firebasestorage.googleapis.com/v0/b/portfolio-template-e927a.appspot.com/o/projects%2Fproject5.png?alt=media&token=30f2f1c8-6448-45c3-b0b7-298239080ddf" ></ProjectImage></a>
     </ProjectCard>,
     <ProjectCard>
       <ProjectTitle>Record U</ProjectTitle>

@@ -160,8 +160,8 @@ function Header(props) {
         //     </Nav>
         //   </Navbar.Collapse>
         // </Navbar>
-
-        <NavName>Your Friend Deej</NavName>}
+        <NavBar><NavItem></NavItem><NavName>Your Friend Deej</NavName></NavBar>
+      }
 
 
 

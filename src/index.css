@@ -21,6 +21,18 @@ code {
   display: none;
 } */
 
+.lin:link {
+  color: black;
+}
+
+
+.lin:visited {
+  color: gray;
+}
+.lin:hover {
+  color: purple;
+}
+
 @media only screen and (min-width: 768px) {
 
   .expand {

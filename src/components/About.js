@@ -69,6 +69,19 @@ function About(props) {
 
   `;
 
+  const Bio = (props) => {
+    console.log(props.props)
+    let splitBio = props.props.split("\\n")
+    splitBio.forEach((b, i) => {
+      console.log(b)
+      splitBio[i] = <p>{b}</p>
+    })
+    return splitBio
+    // return <p>{props.props}</p>
+  }
+
+
+
   return (
     <React.Fragment>
       <AboutSection>
@@ -81,7 +94,7 @@ function About(props) {
 
             </AboutPic>
             <AboutContent>
-              {value.fullbio}
+              <Bio props={value.fullbio} />
             </AboutContent>
 
           </FlexContainer>

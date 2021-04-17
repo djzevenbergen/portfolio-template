@@ -4,6 +4,7 @@ import Intro from './Intro';
 import About from './About';
 import Projects from './Projects';
 import Contact from './Contact';
+import MovingTickets from './MovingTickets';
 import SignIn from './SignIn';
 import AdminPage from './AdminPage';
 import { withFirestore, useFirestore } from 'react-redux-firebase';
@@ -91,15 +92,21 @@ function App() {
           <UserContext.Provider value={{ value }}>
             {console.log(value)}
             <ThemeProvider theme={theme}>
-              <Header theme={theme} />
+
               <Switch>
                 <Route path='/signin'>
+                  <Header theme={theme} />
                   <SignIn />
                 </Route>
                 <Route path='/adminpage'>
+                  <Header theme={theme} />
                   <AdminPage />
                 </Route>
+                <Route path='/movingtickets'>
+                  <MovingTickets theme={theme} />
+                </Route>
                 <Route exact path='/'>
+                  <Header theme={theme} />
                   <Intro theme={theme} />
                   <About theme={theme} />
                   <Projects theme={theme} />
